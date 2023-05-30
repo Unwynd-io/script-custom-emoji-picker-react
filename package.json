@@ -47,14 +47,14 @@
   },
   "name": "script-custom-emoji-picker-react",
   "author": "ealush",
-  "module": "dist/emoji-picker-react.esm.js",
+  "module": "dist/script-custom-emoji-picker-react.esm.js",
   "size-limit": [
     {
-      "path": "dist/emoji-picker-react.cjs.production.min.js",
+      "path": "dist/script-custom-emoji-picker-react.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/emoji-picker-react.esm.js",
+      "path": "dist/script-custom-emoji-picker-react.esm.js",
       "limit": "10 KB"
     }
   ],
