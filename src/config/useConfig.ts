@@ -50,6 +50,11 @@ export function useOnEmojiClickConfig(): (
   return onEmojiClick;
 }
 
+export function useOnEmojiClearConfig(): () => void {
+  const { onEmojiClear } = usePickerConfig();
+  return onEmojiClear;
+}
+
 export function usePreviewConfig(): PreviewConfig {
   const { previewConfig } = usePickerConfig();
   return previewConfig;

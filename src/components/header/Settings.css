@@ -1,0 +1,7 @@
+.EmojiPickerReact .epr-settings-menu-container {
+  flex: 1;
+  min-width: 0;
+}
+.EmojiPickerReact .epr-clear-button-container {
+  min-width: 0;
+}
