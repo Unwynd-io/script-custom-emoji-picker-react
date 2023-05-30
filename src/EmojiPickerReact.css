@@ -16,6 +16,7 @@
   /* Header */
   --epr-search-border-color: var(--epr-highlight-color);
   --epr-header-padding: 15px var(--epr-horizontal-padding);
+  --epr-header-settings-padding: 5px var(--epr-horizontal-padding);
 
   /* Skin Tone Picker */
   --epr-active-skin-tone-indicator-border-color: var(--epr-highlight-color);

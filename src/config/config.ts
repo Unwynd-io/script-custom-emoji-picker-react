@@ -60,6 +60,7 @@ export function basePickerConfig(): PickerConfigInternal {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       event: MouseEvent
     ) {},
+    onEmojiClear: function defaultOnClearHandler() {},
     previewConfig: {
       ...basePreviewConfig
     },
@@ -82,6 +83,7 @@ export type PickerConfigInternal = {
   emojiStyle: EmojiStyle;
   categories: CategoriesConfig;
   onEmojiClick: (emoji: EmojiClickData, event: MouseEvent) => void;
+  onEmojiClear: () => void;
   theme: Theme;
   suggestedEmojisMode: SuggestionMode;
   lazyLoadEmojis: boolean;
@@ -97,12 +99,14 @@ export type PreviewConfig = {
   defaultEmoji: string;
   defaultCaption: string;
   showPreview: boolean;
+  showClearButton: boolean;
 };
 
 const basePreviewConfig: PreviewConfig = {
   defaultEmoji: '1f60a',
   defaultCaption: "What's your mood?",
-  showPreview: true
+  showPreview: true,
+  showClearButton: false
 };
 
 type ConfigExternal = {
