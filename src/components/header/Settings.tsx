@@ -5,7 +5,6 @@ import {
   useOnEmojiClearConfig,
   usePreviewConfig
 } from '../../config/useConfig';
-
 import Flex from '../Layout/Flex';
 import { Button } from '../atoms/Button';
 

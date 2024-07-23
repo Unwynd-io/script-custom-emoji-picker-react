@@ -7,7 +7,7 @@ import {
   SkinTonePickerLocation,
   SkinTones,
   SuggestionMode,
-  Theme
+  Theme,
 } from '../types/exposedTypes';
 
 import { CategoriesConfig } from './categoryConfig';
@@ -17,21 +17,21 @@ import {
   SEARCH_RESULTS_ONE_RESULT_FOUND,
   SEARCH_RESULTS_MULTIPLE_RESULTS_FOUND,
   PickerDimensions,
-  PreviewConfig
+  PreviewConfig,
 } from './config';
 import { CustomEmoji } from './customEmojiConfig';
 import { useMutableConfig } from './mutableConfig';
 
 export enum MOUSE_EVENT_SOURCE {
   REACTIONS = 'reactions',
-  PICKER = 'picker'
+  PICKER = 'picker',
 }
 
 export function useSearchPlaceHolderConfig(): string {
   const { searchPlaceHolder, searchPlaceholder } = usePickerConfig();
   return (
     [searchPlaceHolder, searchPlaceholder].find(
-      p => p !== DEFAULT_SEARCH_PLACEHOLDER
+      (p) => p !== DEFAULT_SEARCH_PLACEHOLDER,
     ) ?? DEFAULT_SEARCH_PLACEHOLDER
   );
 }
@@ -77,7 +77,7 @@ export function useOpenConfig(): boolean {
 }
 
 export function useOnEmojiClickConfig(
-  mouseEventSource: MOUSE_EVENT_SOURCE
+  mouseEventSource: MOUSE_EVENT_SOURCE,
 ): (emoji: EmojiClickData, event: MouseEvent) => void {
   const { current } = useMutableConfig();
 
@@ -89,16 +89,18 @@ export function useOnEmojiClickConfig(
   return handler || (() => {});
 }
 
-export function useOnSkinToneChangeConfig(
-): (skinTone: SkinTones) => void {
+export function useOnEmojiClearConfig(): () => void {
+  const { current } = useMutableConfig();
+
+  const handler = current.onEmojiClear;
+
+  return handler || (() => {});
+}
+
+export function useOnSkinToneChangeConfig(): (skinTone: SkinTones) => void {
   const { current } = useMutableConfig();
 
   return current.onSkinToneChange || (() => {});
-}
-
-export function useOnEmojiClearConfig(): () => void {
-  const { onEmojiClear } = usePickerConfig();
-  return onEmojiClear;
 }
 
 export function usePreviewConfig(): PreviewConfig {
@@ -164,7 +166,7 @@ export function useReactionsConfig(): string[] {
 
 export function useGetEmojiUrlConfig(): (
   unified: string,
-  style: EmojiStyle
+  style: EmojiStyle,
 ) => string {
   const { getEmojiUrl } = usePickerConfig();
   return getEmojiUrl;
@@ -184,7 +186,7 @@ export function useSearchResultsConfig(searchResultsCount: number): string {
     return isPlural
       ? SEARCH_RESULTS_MULTIPLE_RESULTS_FOUND.replace(
           '%n',
-          searchResultsCount.toString()
+          searchResultsCount.toString(),
         )
       : SEARCH_RESULTS_ONE_RESULT_FOUND;
   }
