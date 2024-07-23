@@ -109,6 +109,8 @@ The following props are accepted by them picker:
   }
   ```
 
+- `onEmojiClear`: `() => void` - Callback function when an emoji is cleared. "previewConfig.showClearButton" should be set to see the clear button.
+
 - `theme`: `Theme` - The theme of the picker. Can be `light`, `dark` or auto. Default is `light`.
   The `Theme` enum can be imported from the package.
 
@@ -154,13 +156,14 @@ import { SkinTones } from 'emoji-picker-react';
   import { SkinTonePickerLocation } from 'emoji-picker-react';
   ```
 
-- `previewConfig`: `PreviewConfig` - Full control over the Preview component, either to show/hide it, change the default emoji or the default caption.
+- `previewConfig`: `PreviewConfig` - Full control over the Preview component, either to show/hide it, change the default emoji or the default caption, show/hide Clear emoji button.
 
 ```ts
 {
   defaultEmoji: string; // defaults to: "1f60a"
   defaultCaption: string; // defaults to: "What's your mood?"
   showPreview: boolean; // defaults to: true
+  showClearButton: boolean; // defaults to: false
 }
 ```
 

@@ -5,7 +5,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import { PickerConfig } from './config/config';
 import {
   MutableConfigContext,
-  useDefineMutableConfig
+  useDefineMutableConfig,
 } from './config/mutableConfig';
 
 export { ExportedEmoji as Emoji } from './components/emoji/ExportedEmoji';
@@ -17,7 +17,7 @@ export {
   Categories,
   EmojiClickData,
   SuggestionMode,
-  SkinTonePickerLocation
+  SkinTonePickerLocation,
 } from './types/exposedTypes';
 
 export interface PickerProps extends PickerConfig {}
@@ -25,6 +25,7 @@ export interface PickerProps extends PickerConfig {}
 export default function EmojiPicker(props: PickerProps) {
   const MutableConfigRef = useDefineMutableConfig({
     onEmojiClick: props.onEmojiClick,
+    onEmojiClear: props.onEmojiClear,
     onReactionClick: props.onReactionClick,
     onSkinToneChange: props.onSkinToneChange,
   });

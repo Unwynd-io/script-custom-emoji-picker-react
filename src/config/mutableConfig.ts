@@ -1,9 +1,10 @@
 import React from 'react';
 
-import {MouseDownEvent, OnSkinToneChange} from './config';
+import { MouseDownEvent, OnSkinToneChange } from './config';
 
 export type MutableConfig = {
   onEmojiClick?: MouseDownEvent;
+  onEmojiClear?: () => void;
   onReactionClick?: MouseDownEvent;
   onSkinToneChange?: OnSkinToneChange;
 };
@@ -18,12 +19,13 @@ export function useMutableConfig(): React.MutableRefObject<MutableConfig> {
 }
 
 export function useDefineMutableConfig(
-  config: MutableConfig
+  config: MutableConfig,
 ): React.MutableRefObject<MutableConfig> {
   const MutableConfigRef = React.useRef<MutableConfig>({
     onEmojiClick: config.onEmojiClick || emptyFunc,
+    onEmojiClear: config.onEmojiClear || emptyFunc,
     onReactionClick: config.onReactionClick || config.onEmojiClick,
-    onSkinToneChange: config.onSkinToneChange || emptyFunc
+    onSkinToneChange: config.onSkinToneChange || emptyFunc,
   });
 
   React.useEffect(() => {
@@ -33,8 +35,9 @@ export function useDefineMutableConfig(
   }, [config.onEmojiClick, config.onReactionClick]);
 
   React.useEffect(() => {
-    MutableConfigRef.current.onSkinToneChange = config.onSkinToneChange || emptyFunc;
-  }, [config.onSkinToneChange])
+    MutableConfigRef.current.onSkinToneChange =
+      config.onSkinToneChange || emptyFunc;
+  }, [config.onSkinToneChange]);
 
   return MutableConfigRef;
 }

@@ -35,6 +35,16 @@ export default meta;
 export const Native = (args: Props) => (
   <Template {...args} emojiStyle={EmojiStyle.NATIVE} />
 );
+export const NativeClear = (args: Props) => (
+  <Template
+    {...args}
+    emojiStyle={EmojiStyle.NATIVE}
+    previewConfig={{
+      showClearButton: true
+    }}
+    onEmojiClear={() => console.log('clearing emoji')}
+  />
+);
 export const Default = (args: Props) => <Template {...args} />;
 export const Dark = (args: Props) => (
   <TemplateDark {...args} theme={Theme.DARK} />

@@ -4,7 +4,7 @@ import { DEFAULT_REACTIONS } from '../components/Reactions/DEFAULT_REACTIONS';
 import { GetEmojiUrl } from '../components/emoji/BaseEmojiProps';
 import {
   setCustomEmojis,
-  emojiUrlByUnified
+  emojiUrlByUnified,
 } from '../dataUtils/emojiSelectors';
 import {
   EmojiClickData,
@@ -12,13 +12,13 @@ import {
   SkinTonePickerLocation,
   SkinTones,
   SuggestionMode,
-  Theme
+  Theme,
 } from '../types/exposedTypes';
 
 import {
   CategoriesConfig,
   baseCategoriesConfig,
-  mergeCategoriesConfig
+  mergeCategoriesConfig,
 } from './categoryConfig';
 import { CustomEmoji } from './customEmojiConfig';
 
@@ -34,21 +34,21 @@ export const SEARCH_RESULTS_MULTIPLE_RESULTS_FOUND =
   '%n results' + SEARCH_RESULTS_SUFFIX;
 
 export function mergeConfig(
-  userConfig: PickerConfig = {}
+  userConfig: PickerConfig = {},
 ): PickerConfigInternal {
   const base = basePickerConfig();
 
   const previewConfig = Object.assign(
     base.previewConfig,
-    userConfig.previewConfig ?? {}
+    userConfig.previewConfig ?? {},
   );
   const config = Object.assign(base, userConfig);
 
   const categories = mergeCategoriesConfig(userConfig.categories, {
-    suggestionMode: config.suggestedEmojisMode
+    suggestionMode: config.suggestedEmojisMode,
   });
 
-  config.hiddenEmojis.forEach(emoji => {
+  config.hiddenEmojis.forEach((emoji) => {
     config.unicodeToHide.add(emoji);
   });
 
@@ -62,7 +62,7 @@ export function mergeConfig(
     ...config,
     categories,
     previewConfig,
-    skinTonePickerLocation
+    skinTonePickerLocation,
   };
 }
 
@@ -79,7 +79,7 @@ export function basePickerConfig(): PickerConfigInternal {
     height: 450,
     lazyLoadEmojis: false,
     previewConfig: {
-      ...basePreviewConfig
+      ...basePreviewConfig,
     },
     searchDisabled: false,
     searchPlaceHolder: DEFAULT_SEARCH_PLACEHOLDER,
@@ -95,7 +95,7 @@ export function basePickerConfig(): PickerConfigInternal {
     reactions: DEFAULT_REACTIONS,
     open: true,
     allowExpandReactions: true,
-    hiddenEmojis: []
+    hiddenEmojis: [],
   };
 }
 
@@ -132,17 +132,20 @@ export type PreviewConfig = {
   defaultEmoji: string;
   defaultCaption: string;
   showPreview: boolean;
+  showClearButton: boolean;
 };
 
 const basePreviewConfig: PreviewConfig = {
   defaultEmoji: '1f60a',
   defaultCaption: "What's your mood?",
-  showPreview: true
+  showPreview: true,
+  showClearButton: false,
 };
 
 type ConfigExternal = {
   previewConfig: Partial<PreviewConfig>;
   onEmojiClick: MouseDownEvent;
+  onEmojiClear: () => void;
   onReactionClick: MouseDownEvent;
   onSkinToneChange: OnSkinToneChange;
 } & Omit<PickerConfigInternal, 'previewConfig' | 'unicodeToHide'>;

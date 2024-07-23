@@ -96,6 +96,11 @@ export function useOnSkinToneChangeConfig(
   return current.onSkinToneChange || (() => {});
 }
 
+export function useOnEmojiClearConfig(): () => void {
+  const { onEmojiClear } = usePickerConfig();
+  return onEmojiClear;
+}
+
 export function usePreviewConfig(): PreviewConfig {
   const { previewConfig } = usePickerConfig();
   return previewConfig;
