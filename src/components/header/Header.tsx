@@ -1,16 +1,17 @@
-import * as React from 'react';
+import { cx } from "flairup";
+import * as React from "react";
 
-import Relative from '../Layout/Relative';
-import { CategoryNavigation } from '../navigation/CategoryNavigation';
+import { commonInteractionStyles } from "../../Stylesheet/stylesheet";
+import Relative from "../Layout/Relative";
+import { CategoryNavigation } from "../navigation/CategoryNavigation";
 
-import './Header.css';
-import { SearchContainer } from './Search';
+import { SearchContainer } from "./Search/Search";
 
-import { SettingsContainer } from './Settings';
+import { SettingsContainer } from "./Settings";
 
 export function Header() {
   return (
-    <Relative className="epr-header">
+    <Relative className={cx("epr-header", commonInteractionStyles.hiddenOnReactions)}>
       <SettingsContainer />
       <SearchContainer />
       <CategoryNavigation />

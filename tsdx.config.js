@@ -1,17 +1,13 @@
-const postcss = require('rollup-plugin-postcss');
+const svg = require('rollup-plugin-svg');
 
 module.exports = {
   rollup(config, options) {
+    const external = config.external;
+    config.external = id => (id.match(/.svg$/) ? false : external(id));
+
     config.plugins.push(
-      postcss({
-        plugins: [
-          require('postcss-inline-svg'),
-          require('postcss-svgo'),
-          require('autoprefixer'),
-          require('cssnano')
-        ],
-        inject: true,
-        extract: !!options.writeMeta
+      svg({
+        base64: true
       })
     );
     return config;
