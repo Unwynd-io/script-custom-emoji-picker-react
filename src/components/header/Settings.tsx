@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cx } from 'flairup';
 import * as React from 'react';
 
 import {
@@ -7,8 +7,6 @@ import {
 } from '../../config/useConfig';
 import Flex from '../Layout/Flex';
 import { Button } from '../atoms/Button';
-
-import './Settings.css';
 
 export function SettingsContainer() {
   const previewConfig = usePreviewConfig();
@@ -34,7 +32,7 @@ function ClearButton() {
 
   return (
     <Flex className="epr-clear-button-container">
-      <Button className={clsx('epr-btn-clear-emoji')} onClick={onEmojiClear}>
+      <Button className={cx('epr-btn-clear-emoji')} onClick={onEmojiClear}>
         Remove
       </Button>
     </Flex>
