@@ -30,11 +30,11 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "node ./scripts/prepare.js && yarn type-check && tsdx build --transpileOnly && node ./scripts/copyData.js",
+    "build": "node ./scripts/prepare.js && pnpm run type-check && tsdx build --transpileOnly && node ./scripts/copyData.js",
     "type-check": "tsc --noEmit --incremental --pretty --project tsconfig.json",
     "test": "tsdx test --passWithNoTests",
     "lint": "eslint ./src --ext .ts,.tsx",
-    "prepare": "yarn type-check && tsdx build --transpileOnly",
+    "prepare": "pnpm run type-check && tsdx build --transpileOnly",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "storybook dev -p 6006",
@@ -45,7 +45,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint"
+      "pre-commit": "pnpm run lint"
     }
   },
   "prettier": {
@@ -108,6 +108,5 @@
   },
   "dependencies": {
     "flairup": "1.0.0"
-  },
-  "packageManager": "yarn@1.22.19"
+  }
 }
